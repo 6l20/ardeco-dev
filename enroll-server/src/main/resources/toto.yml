@@ -1,0 +1,8 @@
+---
+- hosts: webservers
+  sudo: true
+    tasks:
+      - name: get the WAR
+        get_url:
+          url="http://192.168.1.207:7777/view/ARDECO/job/BUILD_OIDC_SERVER/lastSuccessfulBuild/artifact/openid-connect-server-webapp/target/openid-connect-server-webapp.war"
+          dest="/tmp"
