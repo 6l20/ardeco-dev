@@ -12,37 +12,55 @@
 			<id>PROD</id>
 			<properties>
 				<server.url>https://ardeconnect.eu:57843/openid-connect-server-webapp/</server.url>
+                <jetty.port>9999</jetty.port>
 				<oidc.issuer>https://ardeconnect.eu:57843/openid-connect-server-webapp/</oidc.issuer>
 				<oidc.subject>90342.ASDFJWFA</oidc.subject>
                 <oidc.client.id>0d4e6487-1a3c-44a8-91e6-78febef91368</oidc.client.id>
                 <oidc.client.secret>AJDTQtuhs-eC14i4G-lCU5W5y20EyP469pDrYv5LuEhtWUWgy1CuTrm_PIXAQirbVnjGoR54fECDTluAGpOJIrw</oidc.client.secret>
-                <client.redirect.uri>http://localhost:9999/simple-web-app/openid_connect_login</client.redirect.uri>
+                <client.redirect.uri>http://localhost:${jetty.port}/simple-web-app/openid_connect_login</client.redirect.uri>
+
 			</properties>
 		</profile>
 		<profile>
-			<id>DEV</id>
-			<properties>
-				<!--server.url>http://localhost:8080/openid-connect-server-webapp/</server.url-->
-				<!--oidc.issuer>http://localhost:8080/openid-connect-server-webapp/</oidc.issuer-->
-				<server.url>http://localhost:8888/</server.url>
-				<oidc.issuer>http://localhost:8080/osiam/</oidc.issuer>
-				<oidc.subject>90342.ASDFJWFA</oidc.subject>
-                <oidc.client.id>client</oidc.client.id>
-                <oidc.client.secret>69200270-ae81-44d5-a161-1c93fda543ef</oidc.client.secret>
-                <client.redirect.uri>http://localhost:9999/simple-web-app/openid_connect_login</client.redirect.uri>
-			</properties>
-		</profile>
+        <id>DEV</id>
+        <properties>
+            <!--server.url>http://localhost:8080/openid-connect-server-webapp/</server.url-->
+            <!--oidc.issuer>http://localhost:8080/openid-connect-server-webapp/</oidc.issuer-->
+            <jetty.port>9999</jetty.port>
+            <server.url>http://localhost:8888/</server.url>
+            <oidc.issuer>http://localhost:8080/osiam/</oidc.issuer>
+            <oidc.subject>90342.ASDFJWFA</oidc.subject>
+            <oidc.client.id>client</oidc.client.id>
+            <oidc.client.secret>69200270-ae81-44d5-a161-1c93fda543ef</oidc.client.secret>
+            <client.redirect.uri>http://localhost:9999/simple-web-app/openid_connect_login</client.redirect.uri>
+        </properties>
+    </profile>
+        <profile>
+            <id>DEV-O-LABS</id>
+            <properties>
+                <!--server.url>http://localhost:8080/openid-connect-server-webapp/</server.url-->
+                <!--oidc.issuer>http://localhost:8080/openid-connect-server-webapp/</oidc.issuer-->
+                <jetty.port>9998</jetty.port>
+                <server.url>https://ardeconnect.eu:57843/osiam/</server.url>
+                <oidc.issuer>https://ardeconnect.eu:57843/osiam/</oidc.issuer>
+                <oidc.subject>90342.ASDFJWFA</oidc.subject>
+                <oidc.client.id>client-orange-labs</oidc.client.id>
+                <oidc.client.secret>2aa2fff3-e2ac-4ca4-9e2c-f2f8079fc3e5</oidc.client.secret>
+                <client.redirect.uri>http://localhost:${jetty.port}/simple-web-app/openid_connect_login</client.redirect.uri>
+            </properties>
+        </profile>
 		<profile>
 			<id>PROD-OSIAM</id>
 			<properties>
 				<!--server.url>http://localhost:8080/openid-connect-server-webapp/</server.url-->
 				<!--oidc.issuer>http://localhost:8080/openid-connect-server-webapp/</oidc.issuer-->
+                <jetty.port>9999</jetty.port>
 				<server.url>https://ardeconnect.eu:57843/osiam/</server.url>
 				<oidc.issuer>https://ardeconnect.eu:57843/osiam/</oidc.issuer>
 				<oidc.subject>90342.ASDFJWFA</oidc.subject>
 				<oidc.client.id>client</oidc.client.id>
 				<oidc.client.secret>952d6e8a-5881-47f5-b32f-bbc26aef8369</oidc.client.secret>
-				<client.redirect.uri>http://localhost:9999/simple-web-app/openid_connect_login</client.redirect.uri>
+				<client.redirect.uri>http://localhost:${jetty.port}/simple-web-app/openid_connect_login</client.redirect.uri>
 			</properties>
 		</profile>
 	</profiles>
@@ -269,7 +287,7 @@
 				<configuration>
 					<httpConnector>
 						<!--host>localhost</host-->
-						<port>9999</port>
+						<port>${jetty.port}</port>
 					</httpConnector>
 			    <scanIntervalSeconds>10</scanIntervalSeconds>
 				    <webApp>
