@@ -1,2 +1,3 @@
 enroll-server/.idea/
 openid-connect-client/.gitignore
+enroll-server/target/
