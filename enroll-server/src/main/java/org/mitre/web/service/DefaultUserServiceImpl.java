@@ -7,6 +7,7 @@ import org.osiam.client.OsiamConnector;
 import org.osiam.client.oauth.AccessToken;
 import org.osiam.client.oauth.Scope;
 import org.osiam.resources.scim.*;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StopWatch;
 
@@ -18,6 +19,12 @@ import java.util.List;
  */
 @Service
 public class DefaultUserServiceImpl implements UserService {
+    @Value("${server.url}")
+    private String url;
+    @Value("${client.id}")
+    private String clientId;
+    @Value("${client.secret}")
+    private String clientSecret;
     @Override
     public ArdecoResponse addUser(String jsonString) {
         ArdecoResponse response = new ArdecoResponse();
@@ -31,9 +38,9 @@ public class DefaultUserServiceImpl implements UserService {
         addInfo.add("User parsed " + u.getName() );
 
         OsiamConnector osiamConnector = new OsiamConnector.Builder()
-                .withEndpoint("http://localhost:8888")
-                .setClientId("client")
-                .setClientSecret("69200270-ae81-44d5-a161-1c93fda543ef")
+                .withEndpoint(url)
+                .setClientId(clientId)
+                .setClientSecret(clientSecret)
                 .build();
         addInfo.add("Connector Built");
         AccessToken accessToken = null;

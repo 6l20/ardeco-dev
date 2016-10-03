@@ -32,7 +32,7 @@
             <oidc.subject>90342.ASDFJWFA</oidc.subject>
             <oidc.client.id>client</oidc.client.id>
             <oidc.client.secret>69200270-ae81-44d5-a161-1c93fda543ef</oidc.client.secret>
-            <client.redirect.uri>http://localhost:9999/simple-web-app/openid_connect_login</client.redirect.uri>
+            <client.redirect.uri>http://localhost:${jetty.port}/simple-web-app/openid_connect_login</client.redirect.uri>
         </properties>
     </profile>
         <profile>
